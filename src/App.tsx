@@ -31,7 +31,7 @@ const AppContent: React.FC = () => {
         <Contact />
       </main>
       
-      <FloatingDock activeSection={activeSection} />
+      {activeSection !== "hero" && <FloatingDock activeSection={activeSection} />}
     </div>
   );
 };

@@ -1,11 +1,49 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react'; // Import hooks
 import { motion } from 'framer-motion';
 import { ArrowRight, Github, Linkedin, ExternalLink } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { useResume } from '../../context/ResumeContext';
 
+// We declare the VANTA object on the window to tell TypeScript it exists
+declare global {
+  interface Window {
+    VANTA: any;
+  }
+}
+
 export const Hero: React.FC = () => {
   const { name, title, tagline, links } = useResume();
+  const vantaRef = useRef(null);
+  const vantaEffect = useRef<any>(null); // To hold the Vanta instance
+
+  useEffect(() => {
+    // Initialize Vanta.js effect
+    if (window.VANTA && vantaRef.current && !vantaEffect.current) {
+      vantaEffect.current = window.VANTA.FOG({
+        el: vantaRef.current,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        highlightColor: 0x130a05,
+        midtoneColor: 0xa72c,
+        lowlightColor: 0x5891f,
+        baseColor: 0x141424, // Changed to a darker base color
+        blurFactor: 0.45,
+        speed: 1.50,
+        zoom: 0.8 // Added zoom to make it less overwhelming
+      });
+    }
+
+    // Cleanup function to destroy the effect on component unmount
+    return () => {
+      if (vantaEffect.current) {
+        vantaEffect.current.destroy();
+        vantaEffect.current = null;
+      }
+    };
+  }, []); // Empty array ensures this runs only once
 
   const scrollToProjects = () => {
     const element = document.getElementById('projects');
@@ -22,31 +60,12 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-noise">
-      {/* Animated background */}
-      <div className="absolute inset-0 gradient-radial animate-pulse" />
-      <motion.div
-        animate={{ 
-          rotate: 360,
-          scale: [1, 1.1, 1]
-        }}
-        transition={{ 
-          rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-          scale: { duration: 8, repeat: Infinity, ease: "easeInOut" }
-        }}
-        className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{ 
-          rotate: -360,
-          scale: [1, 0.9, 1]
-        }}
-        transition={{ 
-          rotate: { duration: 25, repeat: Infinity, ease: "linear" },
-          scale: { duration: 10, repeat: Infinity, ease: "easeInOut" }
-        }}
-        className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-accent/3 rounded-full blur-3xl"
-      />
+    <section 
+      id="hero"
+      ref={vantaRef} // Attach the ref here
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+    >
+      {/* The Vanta.js canvas will be injected here automatically */}
 
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
         <motion.h1

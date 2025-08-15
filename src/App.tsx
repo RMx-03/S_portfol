@@ -14,6 +14,7 @@ import FloatingLogo from "./components/ui/FloatingLogo"
 import { ResumeProvider, useResume } from "./context/ResumeContext"
 import { useScrollSpy } from "./hooks/useScrollSpy"
 import { updateDocumentMeta } from "./lib/seo"
+import TargetCursor from "./components/ui/TargetCursor"
 
 declare global {
   interface Window {
@@ -97,6 +98,7 @@ const AppContent: React.FC = () => {
       {isLoading && <LoadingScreen onLoadingComplete={handleLoadingComplete} />}
 
       <FloatingLogo isVisible={!isLoading} onLogoClick={scrollToHero} />
+      <TargetCursor />
 
       <div
         className={`relative z-10 transition-all duration-1000 ${

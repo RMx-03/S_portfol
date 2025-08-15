@@ -13,7 +13,7 @@ export const Skills: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="py-24 px-6 bg-primary-800/30">
+    <section id="skills" className="py-24 px-6 bg-primary-800/50">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -143,10 +143,10 @@ export const Projects: React.FC = () => {
                                 e.stopPropagation()
                                 window.open(proj.live, "_blank")
                               }}
-                              className="rounded-lg bg-green-500/20 p-1.5 hover:bg-green-500/30 hover:scale-105"
+                              className="rounded-lg bg-lime-500/20 p-1.5 hover:bg-lime-500/30 hover:scale-105"
                               title="View Live Demo"
                             >
-                              <ExternalLink size={14} className="text-green-400" />
+                              <ExternalLink size={14} className="text-lime-400" />
                             </button>
                           )}
                         </div>
@@ -159,7 +159,7 @@ export const Projects: React.FC = () => {
                       <div className="space-y-1">
                         {proj.highlights.slice(0, 2).map((h, k) => (
                           <div key={k} className="flex items-start gap-1.5 text-xs text-white/70">
-                            <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-green-400" />
+                            <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-green-600" />
                             <span className="line-clamp-1">{h}</span>
                           </div>
                         ))}

@@ -12,10 +12,10 @@ const FloatingLogo: React.FC<FloatingLogoProps> = ({ isVisible, onLogoClick }) =
   if (!isVisible) return null
 
   const handleResumeDownload = () => {
-    // Create a temporary link element to trigger download
     const link = document.createElement("a")
-    link.href = "/resume.pdf" // You'll need to add your resume PDF to the public folder
+    link.href = "/resume.pdf"
     link.download = "Sauham_Vyas_Resume.pdf"
+    link.target = "_blank" // Open in new tab as fallback
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)

@@ -6,20 +6,27 @@ import { motion } from "framer-motion"
 export const About: React.FC = () => {
   return (
     <section id="about" className="py-24 px-6 relative">
-      <div className="absolute inset-0 opacity-10">
-        <div
-          className="w-full h-full"
-          style={{
-            backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+      {/* This div is the solid black background that will be masked */}
+      <div
+        className="absolute inset-0 bg-black z-0"
+        style={{
+          // This mask now correctly defines the lines as the transparent part
+          WebkitMaskImage: `
+            repeating-linear-gradient(to right, transparent 0, transparent 1px, black 1px, black 20px),
+            repeating-linear-gradient(to bottom, transparent 0, transparent 1px, black 1px, black 20px)
           `,
-            backgroundSize: "20px 20px",
-          }}
-        />
-      </div>
+          maskImage: `
+            repeating-linear-gradient(to right, transparent 0, transparent 1px, black 1px, black 20px),
+            repeating-linear-gradient(to bottom, transparent 0, transparent 1px, black 1px, black 20px)
+          `,
+          // The size of the repeating grid pattern
+          WebkitMaskSize: "20px 20px",
+          maskSize: "20px 20px",
+        }}
+      />
 
-      <div className="max-w-6xl mx-auto relative">
+      {/* All of your content is placed in a separate container with a higher z-index */}
+      <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

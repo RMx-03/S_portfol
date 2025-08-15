@@ -131,8 +131,8 @@ export const Projects: React.FC = () => {
                                 e.stopPropagation()
                                 window.open(proj.repo, "_blank")
                               }}
-                              className="rounded-lg bg-white/10 p-1.5 hover:bg-white/20 hover:scale-105"
-                              title="View Repository"
+                              className="cursor-target cursor-none rounded-lg bg-white/10 p-1.5 hover:bg-white/20 hover:scale-105"
+                              data-label="View Repository"
                             >
                               <Github size={14} />
                             </button>
@@ -192,14 +192,16 @@ export const Projects: React.FC = () => {
         <button
           aria-label="Previous project"
           onClick={stepLeft}
-          className="absolute left-4 md:left-8 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/20 bg-black/50 p-3 backdrop-blur-sm hover:scale-110 hover:bg-black/70"
+          className="absolute left-4 md:left-8 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/20 bg-black/50 p-3 backdrop-blur-sm hover:scale-110 hover:bg-black/70 cursor-target cursor-none"
+          data-label="Left"
         >
           <ChevronLeft size={24} className="text-white" />
         </button>
         <button
           aria-label="Next project"
           onClick={stepRight}
-          className="absolute right-4 md:right-8 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/20 bg-black/50 p-3 backdrop-blur-sm hover:scale-110 hover:bg-black/70"
+          className="absolute right-4 md:right-8 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/20 bg-black/50 p-3 backdrop-blur-sm hover:scale-110 hover:bg-black/70 cursor-target cursor-none"
+          data-label="Right"
         >
           <ChevronRight size={24} className="text-white" />
         </button>
@@ -213,7 +215,7 @@ export const Projects: React.FC = () => {
             <button
               key={i}
               onClick={() => setRotation(-i * ANGLE)}
-              className={`h-3 w-3 rounded-full transition-all duration-300 ${
+              className={`cursor-target cursor-none h-3 w-3 rounded-full transition-all duration-300 ${
                 isActive ? "scale-125 bg-accent" : "bg-white/30 hover:bg-white/50"
               }`}
               aria-label={`Go to project ${i + 1}`}

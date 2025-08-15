@@ -56,7 +56,7 @@ export const FloatingDock: React.FC<FloatingDockProps> = ({ activeSection }) => 
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={item.action}
-            className="cursor-target relative flex items-center justify-center p-3 rounded-xl transition-all duration-200 text-white/70 hover:text-white hover:bg-white/10"
+            className="cursor-target cursor-none relative flex items-center justify-center p-3 rounded-xl transition-all duration-200 text-white/70 hover:text-white hover:bg-white/10"
             data-label={item.label}
           >
             {activeSection === item.id && (

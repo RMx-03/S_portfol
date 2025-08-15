@@ -100,9 +100,11 @@ export const About: React.FC = () => {
               <img
                 src="/ai-developer.jpg"
                 alt="AI and Machine Learning Development"
-                className="rounded-2xl shadow-2xl border border-white/10"
+                className="rounded-2xl shadow-2xl border border-white/10 cursor-target pointer-events-auto"
+                data-label="Me"
+                style={{ pointerEvents: "auto" }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl pointer-events-none" />
             </div>
           </motion.div>
         </div>

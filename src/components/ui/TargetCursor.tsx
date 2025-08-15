@@ -347,28 +347,28 @@ const TargetCursor = ({ targetSelector = ".cursor-target", spinDuration = 2, hid
     >
       <div
         ref={dotRef}
-        className="absolute left-1/2 top-1/2 w-1 h-1 bg-green-400 rounded-full transform -translate-x-1/2 -translate-y-1/2"
+        className="absolute left-1/2 top-1/2 w-1 h-1 bg-yellow-400 rounded-full transform -translate-x-1/2 -translate-y-1/2"
         style={{ willChange: "transform" }}
       />
       <div
         ref={labelRef}
-        className="absolute left-1/2 top-1/2 px-2 py-1 bg-black/80 text-green-400 text-xs font-medium rounded backdrop-blur-sm border border-green-400/20 whitespace-nowrap transform translate-x-4 -translate-y-1/2"
+        className="absolute left-1/2 top-1/2 px-2 py-1 bg-black/80 text-yellow-400 text-xs font-medium rounded backdrop-blur-sm border border-green-400/20 whitespace-nowrap transform translate-x-4 -translate-y-1/2"
         style={{ willChange: "transform" }}
       />
       <div
-        className="target-cursor-corner absolute left-1/2 top-1/2 w-3 h-3 border-[3px] border-green-400 transform -translate-x-[150%] -translate-y-[150%] border-r-0 border-b-0"
+        className="target-cursor-corner absolute left-1/2 top-1/2 w-3 h-3 border-[3px] border-red-600 transform -translate-x-[150%] -translate-y-[150%] border-r-0 border-b-0"
         style={{ willChange: "transform" }}
       />
       <div
-        className="target-cursor-corner absolute left-1/2 top-1/2 w-3 h-3 border-[3px] border-green-400 transform translate-x-1/2 -translate-y-[150%] border-l-0 border-b-0"
+        className="target-cursor-corner absolute left-1/2 top-1/2 w-3 h-3 border-[3px] border-red-600 transform translate-x-1/2 -translate-y-[150%] border-l-0 border-b-0"
         style={{ willChange: "transform" }}
       />
       <div
-        className="target-cursor-corner absolute left-1/2 top-1/2 w-3 h-3 border-[3px] border-green-400 transform translate-x-1/2 translate-y-1/2 border-l-0 border-t-0"
+        className="target-cursor-corner absolute left-1/2 top-1/2 w-3 h-3 border-[3px] border-red-600 transform translate-x-1/2 translate-y-1/2 border-l-0 border-t-0"
         style={{ willChange: "transform" }}
       />
       <div
-        className="target-cursor-corner absolute left-1/2 top-1/2 w-3 h-3 border-[3px] border-green-400 transform -translate-x-[150%] translate-y-1/2 border-r-0 border-t-0"
+        className="target-cursor-corner absolute left-1/2 top-1/2 w-3 h-3 border-[3px] border-red-600 transform -translate-x-[150%] translate-y-1/2 border-r-0 border-t-0"
         style={{ willChange: "transform" }}
       />
     </div>

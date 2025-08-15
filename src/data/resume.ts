@@ -63,17 +63,6 @@ export const resumeData: ResumeData = {
   },
   projects: [
     {
-      name: "Document RAG Chat Application",
-      summary: "Intelligent document processing system using Retrieval-Augmented Generation for natural language queries over large document collections.",
-      highlights: [
-        "Implemented advanced RAG pipeline with vector embeddings",
-        "Built real-time chat interface with document context awareness",
-        "Optimized query performance for large document sets"
-      ],
-      tech: ["Python", "LangChain", "OpenAI", "ChromaDB", "Streamlit"],
-      repo: "https://github.com/Sauham/Document-RAG-Chat-Application"
-    },
-    {
       name: "AI Recommendation System",
       summary: "Machine learning-powered recommendation engine with collaborative and content-based filtering for personalized user experiences.",
       highlights: [
@@ -85,7 +74,29 @@ export const resumeData: ResumeData = {
       repo: "https://github.com/Sauham/AI-Recommendation-System"
     },
     {
-      name: "Computer Vision Projects",
+      name: "Data Extraction and Sentiment Analysis",
+      summary: "Automated web scraping and data extraction tool for processing multiple URLs with intelligent content parsing.",
+      highlights: [
+        "Built robust web scraping framework",
+        "Implemented intelligent content extraction algorithms",
+        "Created scalable processing pipeline for batch URLs"
+      ],
+      tech: ["Python", "BeautifulSoup", "Requests", "Selenium", "Pandas"],
+      repo: "https://github.com/Sauham/Data-Extraction-from-URLs"
+    },
+    {
+      name: "RAG Document Chat Application",
+      summary: "Intelligent document processing system using Retrieval-Augmented Generation for natural language queries over large document collections.",
+      highlights: [
+        "Implemented advanced RAG pipeline with vector embeddings",
+        "Built real-time chat interface with document context awareness",
+        "Optimized query performance for large document sets"
+      ],
+      tech: ["Python", "LangChain", "OpenAI", "ChromaDB", "Streamlit"],
+      repo: "https://github.com/Sauham/Document-RAG-Chat-Application"
+    },    
+    {
+      name: "Fetus Location and Organ Detection",
       summary: "Collection of computer vision applications including object detection, image classification, and facial recognition systems.",
       highlights: [
         "Developed real-time object detection with YOLO",
@@ -96,16 +107,16 @@ export const resumeData: ResumeData = {
       repo: "https://github.com/Sauham/CV-Projects"
     },
     {
-      name: "Data Extraction from URLs",
-      summary: "Automated web scraping and data extraction tool for processing multiple URLs with intelligent content parsing.",
+      name: "AI Research agent using LangGraph",
+      summary: "Collection of computer vision applications including object detection, image classification, and facial recognition systems.",
       highlights: [
-        "Built robust web scraping framework",
-        "Implemented intelligent content extraction algorithms",
-        "Created scalable processing pipeline for batch URLs"
+        "Developed real-time object detection with YOLO",
+        "Created facial recognition system with 95% accuracy",
+        "Implemented image preprocessing and augmentation pipelines"
       ],
-      tech: ["Python", "BeautifulSoup", "Requests", "Selenium", "Pandas"],
-      repo: "https://github.com/Sauham/Data-Extraction-from-URLs"
-    }
+      tech: ["Python", "OpenCV", "TensorFlow", "YOLO", "NumPy"],
+      repo: "https://github.com/Sauham/AI-Research-agent-using-LangGraph"
+    }     
   ],
   experience: [
     {

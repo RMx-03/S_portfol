@@ -10,6 +10,7 @@ import { Experience } from "./components/sections/Experience"
 import { Contact } from "./components/sections/Contact"
 import { FloatingDock } from "./components/navigation/FloatingDock"
 import { LoadingScreen } from "./components/ui/LoadingScreen"
+import FloatingLogo from "./components/ui/FloatingLogo"
 import { ResumeProvider, useResume } from "./context/ResumeContext"
 import { useScrollSpy } from "./hooks/useScrollSpy"
 import { updateDocumentMeta } from "./lib/seo"
@@ -46,9 +47,18 @@ const AppContent: React.FC = () => {
     }, 500)
   }
 
+  const scrollToHero = () => {
+    const element = document.getElementById("hero")
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   return (
     <div className="min-h-screen bg-primary-900 text-white">
       {isLoading && <LoadingScreen onLoadingComplete={handleLoadingComplete} />}
+
+      <FloatingLogo isVisible={!isLoading} onLogoClick={scrollToHero} />
 
       <div
         className={`transition-all duration-1000 ${

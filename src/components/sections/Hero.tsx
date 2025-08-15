@@ -1,20 +1,23 @@
-import React, { useEffect, useRef } from 'react'; // Import hooks
-import { motion } from 'framer-motion';
-import { ArrowRight, Github, Linkedin, ExternalLink } from 'lucide-react';
-import { Button } from '../ui/Button';
-import { useResume } from '../../context/ResumeContext';
+"use client"
+
+import type React from "react" // Import hooks
+import { useEffect, useRef } from "react"
+import { motion } from "framer-motion"
+import { ArrowRight, Github, Linkedin, ExternalLink } from "lucide-react"
+import { Button } from "../ui/Button"
+import { useResume } from "../../context/ResumeContext"
 
 // We declare the VANTA object on the window to tell TypeScript it exists
 declare global {
   interface Window {
-    VANTA: any;
+    VANTA: any
   }
 }
 
 export const Hero: React.FC = () => {
-  const { name, title, tagline, links } = useResume();
-  const vantaRef = useRef(null);
-  const vantaEffect = useRef<any>(null); // To hold the Vanta instance
+  const { name, title, tagline, links } = useResume()
+  const vantaRef = useRef(null)
+  const vantaEffect = useRef<any>(null) // To hold the Vanta instance
 
   useEffect(() => {
     // Initialize Vanta.js effect
@@ -24,43 +27,43 @@ export const Hero: React.FC = () => {
         mouseControls: true,
         touchControls: true,
         gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
+        minHeight: 200.0,
+        minWidth: 200.0,
         highlightColor: 0x130a05,
         midtoneColor: 0xa72c,
         lowlightColor: 0x5891f,
         baseColor: 0x141424, // Changed to a darker base color
         blurFactor: 0.45,
-        speed: 1.50,
-        zoom: 0.8 // Added zoom to make it less overwhelming
-      });
+        speed: 1.5,
+        zoom: 0.8, // Added zoom to make it less overwhelming
+      })
     }
 
     // Cleanup function to destroy the effect on component unmount
     return () => {
       if (vantaEffect.current) {
-        vantaEffect.current.destroy();
-        vantaEffect.current = null;
+        vantaEffect.current.destroy()
+        vantaEffect.current = null
       }
-    };
-  }, []); // Empty array ensures this runs only once
+    }
+  }, []) // Empty array ensures this runs only once
 
   const scrollToProjects = () => {
-    const element = document.getElementById('projects');
+    const element = document.getElementById("projects")
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" })
     }
-  };
+  }
 
   const scrollToContact = () => {
-    const element = document.getElementById('contact');
+    const element = document.getElementById("contact")
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" })
     }
-  };
+  }
 
   return (
-    <section 
+    <section
       id="hero"
       ref={vantaRef} // Attach the ref here
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
@@ -76,7 +79,7 @@ export const Hero: React.FC = () => {
         >
           {name}
         </motion.h1>
-        
+
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -85,7 +88,7 @@ export const Hero: React.FC = () => {
         >
           {title}
         </motion.h2>
-        
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -94,7 +97,7 @@ export const Hero: React.FC = () => {
         >
           {tagline}
         </motion.p>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -109,45 +112,7 @@ export const Hero: React.FC = () => {
             Contact Me
           </Button>
         </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex justify-center gap-6"
-        >
-          <motion.a
-            href={links.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="p-3 rounded-full bg-card border border-primary-700 text-muted hover:text-accent hover:border-accent transition-colors"
-          >
-            <Github size={24} />
-          </motion.a>
-          <motion.a
-            href={links.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="p-3 rounded-full bg-card border border-primary-700 text-muted hover:text-accent hover:border-accent transition-colors"
-          >
-            <Linkedin size={24} />
-          </motion.a>
-          <motion.a
-            href={links.website}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="p-3 rounded-full bg-card border border-primary-700 text-muted hover:text-accent hover:border-accent transition-colors"
-          >
-            <ExternalLink size={24} />
-          </motion.a>
-        </motion.div>
       </div>
     </section>
-  );
-};
+  )
+}

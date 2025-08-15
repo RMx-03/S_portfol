@@ -63,10 +63,10 @@ export const FloatingDock: React.FC<FloatingDockProps> = ({ activeSection }) => 
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
-                className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-accent rounded-xl blur-sm"
+                className="absolute inset-0 bg-gradient-to-r from-accent/70 to-accent/100 rounded-xl blur-sm"
                 style={{
                   boxShadow:
-                    "0 0 20px rgba(34, 197, 94, 0.6), 0 0 40px rgba(34, 197, 94, 0.4), inset 0 0 20px rgba(34, 197, 94, 0.2)",
+                    "0 0 20px rgba(34, 197, 94, 0.8), 0 0 40px rgba(34, 197, 94, 0.6), inset 0 0 20px rgba(34, 197, 94, 0.4)",
                 }}
               />
             )}

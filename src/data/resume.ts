@@ -120,11 +120,11 @@ export const resumeData: ResumeData = {
   ],
   experience: [
     {
-      company: "Tech Innovation Labs",
-      role: "Senior AI Engineer",
-      start: "Jan 2023",
+      company: "Horeca Store",
+      role: "AI Developer",
+      start: "Mar 2025",
       end: "Present",
-      location: "Remote",
+      location: "Remote - Dubai",
       achievements: [
         "Led development of AI-powered recommendation systems serving 10M+ users",
         "Designed and implemented MLOps pipelines reducing model deployment time by 60%",
@@ -133,11 +133,37 @@ export const resumeData: ResumeData = {
       tech: ["Python", "TensorFlow", "AWS", "Kubernetes", "Docker"]
     },
     {
-      company: "AI Startup Inc",
-      role: "Machine Learning Engineer",
-      start: "Jun 2021",
-      end: "Dec 2022",
-      location: "Bangalore, India",
+      company: "SETV Global",
+      role: "AI-ML Engineer",
+      start: "Jul 2024",
+      end: "Feb 2025",
+      location: "Remote - Indore",
+      achievements: [
+        "Built computer vision models for autonomous systems with 92% accuracy",
+        "Optimized model inference speed by 40% through quantization and pruning",
+        "Collaborated with cross-functional teams to deliver AI features on schedule"
+      ],
+      tech: ["PyTorch", "OpenCV", "FastAPI", "PostgreSQL", "Redis"]
+    },
+    {
+      company: "Codsoft Infotech",
+      role: "AI and Data Science Intern",
+      start: "May 2024",
+      end: "Jul 2024",
+      location: "Remote-Indore",
+      achievements: [
+        "Built computer vision models for autonomous systems with 92% accuracy",
+        "Optimized model inference speed by 40% through quantization and pruning",
+        "Collaborated with cross-functional teams to deliver AI features on schedule"
+      ],
+      tech: ["PyTorch", "OpenCV", "FastAPI", "PostgreSQL", "Redis"]
+    },
+    {
+      company: "Devaditya Technocrats LLP",
+      role: "Operations and Data Analyst",
+      start: "May 2023",
+      end: "May 2024",
+      location: "Indore",
       achievements: [
         "Built computer vision models for autonomous systems with 92% accuracy",
         "Optimized model inference speed by 40% through quantization and pruning",

@@ -34,6 +34,13 @@
   font-style: 0;
 }
 
+.delius {
+  font-family: "Delius", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 /* Adding custom scrollbar styling with green accent and dark background */
 /* Custom Scrollbar Styles */
 ::-webkit-scrollbar {

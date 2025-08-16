@@ -10,7 +10,6 @@ export interface ResumeData {
     github: string;
     linkedin: string;
     twitter?: string;
-    website: string;
   };
   about: {
     summary: string;
@@ -45,14 +44,14 @@ export const resumeData: ResumeData = {
   name: "Sauham Vyas",
   title: "AI Engineer",
   titles: ["AI/ML Engineer", "Data Scientist", "Generative AI Engineer", "Prompt Engineer", "Full Stack Developer"],
-  tagline: "A passionate full-stack developer who loves to build things, Currently open for remote work and freelance projects. In my spare time,i enjoy listening to loud music and touching grass.",
+  tagline: "AI engineer by trade, product builder by obsession. I ship fast, scale smart, and occasionally touch grass between debugging sessions.",
   location: "India",
   email: "sauhamv28@gmail.com",
   phone: "+91-XXXXXXXXXX",
   links: {
     github: "https://github.com/Sauham/",
-    linkedin: "https://www.linkedin.com/in/sauham-vyas/",
-    website: "https://sauham.github.io/Final-Portfolio/"
+    linkedin: "https://www.linkedin.com/in/sauham-vyas/"
+    // website: "https://sauham.github.io/Final-Portfolio/"
   },
   about: {
     summary: "AI Engineer specializing in machine learning, natural language processing, and computer vision. Passionate about creating intelligent solutions that solve complex problems and enhance user experiences. Experienced in building scalable AI systems and developer advocacy.",

@@ -22,7 +22,7 @@ export const Skills: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 accent-gradient">
+          <h2 className="prata text-4xl md:text-5xl font-display font-bold mb-6 accent-gradient">
             Skills & Expertise
           </h2>
           <div className="w-24 h-1 bg-accent mx-auto rounded-full" />
@@ -38,10 +38,10 @@ export const Skills: React.FC = () => {
               transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
               className="space-y-6"
             >
-              <h3 className="text-xl font-semibold text-white text-center mb-6">
+              <h3 className="sofiasans text-xl font-semibold text-white text-center mb-6">
                 {category.title}
               </h3>
-              <div className="flex flex-wrap gap-3 justify-center">
+              <div className="delius flex flex-wrap gap-3 justify-center">
                 {category.skills.map((skill, skillIndex) => (
                   <motion.div
                     key={skill}

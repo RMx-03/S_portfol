@@ -68,23 +68,26 @@ export const About: React.FC = () => {
             className="space-y-6"
           >
             <div className="space-y-6">
-              <p className="text-white/90 leading-relaxed text-lg">
-                I am a B.Tech student specializing in Artificial Intelligence at Sage University Indore, with a passion
-                for AI/ML, web development, and data analysis. My academic journey has equipped me with expertise in
-                technologies like React.js, Node.js, OpenCV, and Scikit-learn, alongside a solid understanding of
-                machine learning algorithms and exploratory data analysis techniques.
+              <p className="prata text-white/90 leading-relaxed text-lg">
+                I am Sauham Vyas, an AI/ML Engineer with a passion for building scalable, production-grade AI systems 
+                that solve real-world problems. With hands-on experience across healthcare, e-commerce, and B2B platforms, 
+                I have architected and deployed recommendation engines, diagnostic computer vision models, and 
+                RAG-based chatbots using Python, PyTorch, TensorFlow, and LangChain.
               </p>
 
-              <p className="text-white/90 leading-relaxed text-lg">
-                Currently, I serve as an AI/ML Engineer at SETV Global and a Prompt Engineer at Outlier, where I apply
-                my skills in NLP, Computer Vision, and AI-driven solutions. Previously, I interned at CodSoft and
-                COSMIC365.AI, gaining hands-on experience in artificial intelligence and web development.
+              <p className="prata text-white/90 leading-relaxed text-lg">
+                My journey began at Sage University Indore, where I specialized in Artificial Intelligence 
+                and cultivated a strong foundation in machine learning, NLP, and full-stack development. 
+                Since then, I have worked with startups like Horeca Store and SETV Global, leading AI initiatives 
+                that improved diagnostic accuracy, boosted user engagement, and optimized inventory planning.
+
               </p>
 
-              <p className="text-white/90 leading-relaxed text-lg">
-                My goal is to bridge the gap between technology and impactful real-world applications. With a strong
-                technical foundation and a drive for innovation, I aim to contribute meaningfully to the advancement of
-                AI and related fields.
+              <p className="prata text-white/90 leading-relaxed text-lg">
+                Whether it is fine-tuning LLMs, building agentic workflows, or mentoring junior engineers, 
+                I thrive in fast-paced environments where impact, autonomy, and urgency matter. 
+                I am currently open to remote opportunities and freelance projects—especially those that push the boundaries 
+                of what AI can do.
               </p>
             </div>
           </motion.div>

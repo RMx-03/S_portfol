@@ -1,17 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, ExternalLink, Send } from 'lucide-react';
+import { Mail, Github, Linkedin, Send } from 'lucide-react';
 import { Card } from '../ui/Card';
 import { Button } from '../ui/Button';
 import { useResume } from '../../context/ResumeContext';
+import { useForm, ValidationError } from '@formspree/react';
 
 export const Contact: React.FC = () => {
   const { email, links } = useResume();
+  const [state, handleSubmit] = useForm(import.meta.env.VITE_FORMSPREE_ID as string);
 
   const socialLinks = [
     { icon: <Github size={20} />, label: 'GitHub', href: links.github },
     { icon: <Linkedin size={20} />, label: 'LinkedIn', href: links.linkedin },
-    { icon: <ExternalLink size={20} />, label: 'Portfolio', href: links.website },
   ];
 
   return (
@@ -24,11 +25,11 @@ export const Contact: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 accent-gradient">
+          <h2 className="prata text-4xl md:text-5xl font-display font-bold mb-6 accent-gradient">
             Let's Connect
           </h2>
           <div className="w-24 h-1 bg-accent mx-auto rounded-full mb-6" />
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
+          <p className="delius text-xl text-white/80 max-w-2xl mx-auto">
             Interested in collaborating on AI projects or discussing innovative solutions? 
             I'd love to hear from you.
           </p>
@@ -42,9 +43,9 @@ export const Contact: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <Card>
-              <h3 className="text-xl font-semibold text-white mb-6">Get In Touch</h3>
+              <h3 className="sofiasans text-xl font-semibold text-white mb-6">Get In Touch</h3>
               
-              <div className="space-y-4 mb-8">
+              <div className="delius space-y-4 mb-8">
                 <motion.a
                   href={`mailto:${email}`}
                   whileHover={{ scale: 1.02 }}
@@ -56,7 +57,7 @@ export const Contact: React.FC = () => {
               </div>
               
               <div className="space-y-3">
-                <h4 className="text-sm font-medium text-muted uppercase tracking-wider">
+                <h4 className="sofiasans text-sm font-medium text-muted uppercase tracking-wider">
                   Connect With Me
                 </h4>
                 {socialLinks.map((link) => (
@@ -66,7 +67,7 @@ export const Contact: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.02 }}
-                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-primary-700 transition-colors"
+                    className="delius flex items-center gap-3 p-3 rounded-xl hover:bg-primary-700 transition-colors"
                   >
                     <span className="text-accent">{link.icon}</span>
                     <span className="text-white">{link.label}</span>
@@ -83,42 +84,51 @@ export const Contact: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <Card>
-              <h3 className="text-xl font-semibold text-white mb-6">Quick Message</h3>
+              <h3 className="sofiasans text-xl font-semibold text-white mb-6">Quick Message</h3>
               
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    className="w-full p-3 bg-primary-700 border border-primary-600 rounded-xl text-white placeholder-muted focus:border-accent focus:outline-none transition-colors"
-                  />
-                </div>
-                
-                <div>
-                  <input
-                    type="email"
-                    placeholder="Your Email"
-                    className="w-full p-3 bg-primary-700 border border-primary-600 rounded-xl text-white placeholder-muted focus:border-accent focus:outline-none transition-colors"
-                  />
-                </div>
-                
-                <div>
-                  <textarea
-                    placeholder="Your Message"
-                    rows={4}
-                    className="w-full p-3 bg-primary-700 border border-primary-600 rounded-xl text-white placeholder-muted focus:border-accent focus:outline-none transition-colors resize-none"
-                  />
-                </div>
-                
-                <Button type="submit" className="w-full">
-                  <Send size={16} className="mr-2" />
-                  Send Message
-                </Button>
-              </form>
-              
-              <p className="text-xs text-muted mt-4 text-center">
-                This is a demo form. Configure with your preferred service.
-              </p>
+              {state.succeeded ? (
+                <p className="delius text-lime-400 text-center">Thanks for your message! I'll get back to you soon.</p>
+              ) : (
+                <form className="delius space-y-4" onSubmit={handleSubmit}>
+                  <div>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Your Name"
+                      required
+                      className="w-full p-3 bg-primary-700 border border-primary-600 rounded-xl text-white placeholder-muted focus:border-accent focus:outline-none transition-colors"
+                    />
+                    <ValidationError prefix="Name" field="name" errors={state.errors} />
+                  </div>
+                  
+                  <div>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Your Email"
+                      required
+                      className="w-full p-3 bg-primary-700 border border-primary-600 rounded-xl text-white placeholder-muted focus:border-accent focus:outline-none transition-colors"
+                    />
+                    <ValidationError prefix="Email" field="email" errors={state.errors} />
+                  </div>
+                  
+                  <div>
+                    <textarea
+                      name="message"
+                      placeholder="Your Message"
+                      rows={4}
+                      required
+                      className="w-full p-3 bg-primary-700 border border-primary-600 rounded-xl text-white placeholder-muted focus:border-accent focus:outline-none transition-colors resize-none"
+                    />
+                    <ValidationError prefix="Message" field="message" errors={state.errors} />
+                  </div>
+                  
+                  <Button type="submit" className="sofiasans w-full" disabled={state.submitting}>
+                    <Send size={16} className="mr-2" />
+                    {state.submitting ? "Sending..." : "Send Message"}
+                  </Button>
+                </form>
+              )}
             </Card>
           </motion.div>
         </div>

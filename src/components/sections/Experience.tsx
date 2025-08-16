@@ -75,7 +75,7 @@ export const Experience: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-left mb-8"
           >
-            <h2 className="text-4xl md:text-5xl pt-8 font-display font-bold mb-6 accent-gradient">Experience</h2>
+            <h2 className="federant text-4xl md:text-5xl pt-8 font-display font-bold mb-6 accent-gradient">Experience</h2>
             <motion.svg
               width="120"
               height="20"
@@ -169,10 +169,10 @@ export const Experience: React.FC = () => {
                         {/* Header */}
                         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                           <div>
-                            <h3 className="text-2xl font-bold text-white mb-2">{exp.role}</h3>
-                            <h4 className="text-xl text-lime-400 font-semibold">{exp.company}</h4>
+                            <h3 className="sofiasans text-2xl font-bold text-white mb-2">{exp.role}</h3>
+                            <h4 className="delius text-xl text-lime-400 font-semibold">{exp.company}</h4>
                           </div>
-                          <div className="flex flex-col sm:flex-row gap-4 text-sm text-white/70">
+                          <div className="prata flex flex-col sm:flex-row gap-4 text-sm text-white/70">
                             <div className="flex items-center gap-2">
                               <Calendar size={16} />
                               {exp.start} - {exp.end}
@@ -185,7 +185,7 @@ export const Experience: React.FC = () => {
                         </div>
 
                         {/* Achievements */}
-                        <div className="space-y-3">
+                        <div className="prata space-y-3">
                           {exp.achievements.map((a, idx) => (
                             <motion.div
                               key={idx}
@@ -207,7 +207,7 @@ export const Experience: React.FC = () => {
                         </div>
 
                         {/* Tech */}
-                        <div className="flex flex-wrap gap-2 pt-4">
+                        <div className="delius flex flex-wrap gap-2 pt-4">
                           {exp.tech.map((t, idx) => (
                             <motion.span
                               key={t}

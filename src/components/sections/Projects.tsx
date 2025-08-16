@@ -41,7 +41,7 @@ export const Projects: React.FC = () => {
         transition={{ duration: 0.6 }}
         className="mb-14 text-center"
       >
-        <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 accent-gradient">
+        <h2 className="prata text-4xl md:text-5xl font-display font-bold mb-6 accent-gradient">
           Featured Projects
         </h2>
         <div className="w-24 h-1 bg-accent mx-auto rounded-full mb-6" />
@@ -97,7 +97,7 @@ export const Projects: React.FC = () => {
                   {/* Flat inner layer for clickable content */}
                   <div
                     className={`relative overflow-hidden rounded-2xl bg-black shadow-2xl ${
-                      isFront ? "ring-2 ring-accent shadow-lime-400/80" : ""
+                      isFront ? "ring-1 ring-accent shadow-lime-400/80" : ""
                     }`}
                     style={{
                       width: "min(80vw, 280px)",
@@ -121,7 +121,7 @@ export const Projects: React.FC = () => {
                     {/* Content */}
                     <div className="relative z-10 flex h-[calc(100%-8rem)] md:h-[calc(100%-9rem)] flex-col gap-2 p-4">
                       <div className="flex items-start justify-between gap-2">
-                        <h3 className="text-sm font-bold text-white md:text-base leading-tight flex-1 pr-2">
+                        <h3 className="delius text-sm font-bold text-white md:text-base leading-tight flex-1 pr-2">
                           {proj.name}
                         </h3>
                         <div className="flex gap-1.5 relative z-50 pointer-events-auto">
@@ -152,11 +152,11 @@ export const Projects: React.FC = () => {
                         </div>
                       </div>
 
-                      <p className="text-xs leading-relaxed text-white/80 line-clamp-2">
+                      <p className="sofiasans text-xs leading-relaxed text-white/80 line-clamp-2">
                         {proj.summary}
                       </p>
 
-                      <div className="space-y-1">
+                      <div className="delius space-y-1">
                         {proj.highlights.slice(0, 2).map((h, k) => (
                           <div key={k} className="flex items-start gap-1.5 text-xs text-white/70">
                             <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-green-600" />
@@ -165,7 +165,7 @@ export const Projects: React.FC = () => {
                         ))}
                       </div>
 
-                      <div className="mt-auto flex flex-wrap gap-1">
+                      <div className="sofiasans mt-auto flex flex-wrap gap-1">
                         {proj.tech.slice(0, 4).map((t) => (
                           <span
                             key={t}

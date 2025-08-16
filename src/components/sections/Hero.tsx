@@ -6,7 +6,7 @@ import { useResume } from "../../context/ResumeContext"
 import { useState, useEffect, useRef } from "react"
 
 export const Hero: React.FC = () => {
-  const { name, title, titles, tagline } = useResume()
+  const { name, titles, tagline } = useResume()
 
   const [index, setIndex] = useState(0)
   const wipeControls = useAnimation()
@@ -27,26 +27,24 @@ export const Hero: React.FC = () => {
       if (currentIndex < tagline.length) {
         setDisplayedText(tagline.slice(0, currentIndex + 1))
         currentIndex++
-        timeoutId = setTimeout(typeText, 50) // Typing speed
+        timeoutId = setTimeout(typeText, 50)
       } else {
         setIsTypingComplete(true)
       }
     }
 
-    // Start typing after a delay
     timeoutId = setTimeout(typeText, 2000)
 
     return () => {
       if (timeoutId) clearTimeout(timeoutId)
     }
-  }, [tagline]) // Added tagline as dependency
+  }, [tagline])
 
   useEffect(() => {
     mounted.current = true
 
     const run = async () => {
       while (mounted.current) {
-        // 0% -> 100% (cover text)
         await wipeControls.start({
           scaleX: 1,
           transition: { duration: WIPE_DURATION, ease: [0.65, 0, 0.35, 1] },
@@ -58,7 +56,6 @@ export const Hero: React.FC = () => {
           await new Promise((r) => setTimeout(r, LOOP_DELAY * 1000))
         }
 
-        // 100% -> 0% (reveal new text)
         await wipeControls.start({
           scaleX: 0,
           transition: { duration: WIPE_DURATION, ease: [0.65, 0, 0.35, 1] },
@@ -114,18 +111,61 @@ export const Hero: React.FC = () => {
         </div>
       </motion.div>
 
+      {/* Typing Box (Bottom Right) */}
       <motion.div
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, delay: 1.5 }}
         className="absolute bottom-4 right-4 z-40 max-w-sm cursor-target cursor-none"
-        data-label="Status"
+        data-label="Tagline"
       >
         <div className="bg-white p-4 shadow-lg">
           <p className="prata text-sm text-gray-800 leading-relaxed">
             {displayedText}
             {!isTypingComplete && <span className="animate-pulse text-black text-lg font-bold">|</span>}
           </p>
+        </div>
+      </motion.div>
+
+      {/* Scroll Indicator (Top Right) */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1.8 }}
+        className="absolute top-4 right-4 z-40 flex flex-row items-center justify-center bg-white px-2 py-3 shadow-lg select-none cursor-target cursor-none"
+        aria-hidden
+        data-label="more"
+      >
+        {/* Vertical label */}
+        <span className="sofiasans text-xm tracking-widest rotate-180 [writing-mode:vertical-rl] text-gray-800">
+          SCROLL
+        </span>
+        
+        {/* Line that animates - positioned to the right */}
+        <div className="w-2 h-16 text-gray-800 ml-0.5">
+          <svg 
+            viewBox="0 0 10 64" 
+            width="100%" 
+            height="100%" 
+            fill="none" 
+            stroke="currentColor"
+          >
+            {/* Simple vertical line - taller */}
+            <motion.path
+              d="M5 2 L5 54"
+              strokeWidth="2"
+              strokeLinecap="round"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: [0, 1, 0] }}
+              transition={{ 
+                duration: 2.5, 
+                times: [0, 0.6, 1], 
+                repeat: Infinity, 
+                ease: "easeInOut",
+                repeatDelay: 1
+              }}
+            />
+          </svg>
         </div>
       </motion.div>
     </section>

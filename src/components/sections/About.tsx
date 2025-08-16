@@ -34,7 +34,7 @@ export const About: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-left mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 accent-gradient">About Me</h2>
+          <h2 className="plaster text-4xl md:text-5xl font-display font-bold mb-6 accent-gradient">About Me</h2>
           <motion.svg
             width="120"
             height="20"

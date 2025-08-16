@@ -1,49 +1,103 @@
 "use client"
 
 import type React from "react"
-import { motion } from "framer-motion"
+import { motion, useAnimation } from "framer-motion"
 import { useResume } from "../../context/ResumeContext"
+import { useState, useEffect, useRef } from "react"
 
 export const Hero: React.FC = () => {
-  const { name, title, tagline } = useResume()
+  const { name } = useResume()
+
+  // Array of designations
+  const titles = [
+    "AI/ML Engineer",
+    "Data Scientist",
+    "Generative AI Engineer",
+  ]
+
+  const [index, setIndex] = useState(0)
+  const wipeControls = useAnimation()
+
+  // Slower wipe duration
+  const WIPE_DURATION = 1.2
+  const LOOP_DELAY = 0.2
+
+  const mounted = useRef(true)
+  useEffect(() => {
+    mounted.current = true
+
+    const run = async () => {
+      while (mounted.current) {
+        // 0% -> 100% (cover text)
+        await wipeControls.start({
+          scaleX: 1,
+          transition: { duration: WIPE_DURATION, ease: [0.65, 0, 0.35, 1] },
+        })
+
+        setIndex((prev) => (prev + 1) % titles.length)
+
+        if (LOOP_DELAY > 0) {
+          await new Promise((r) => setTimeout(r, LOOP_DELAY * 1000))
+        }
+
+        // 100% -> 0% (reveal new text)
+        await wipeControls.start({
+          scaleX: 0,
+          transition: { duration: WIPE_DURATION, ease: [0.65, 0, 0.35, 1] },
+        })
+
+        if (LOOP_DELAY > 0) {
+          await new Promise((r) => setTimeout(r, LOOP_DELAY * 1000))
+        }
+      }
+    }
+
+    wipeControls.set({ scaleX: 0 })
+    run()
+
+    return () => {
+      mounted.current = false
+    }
+  }, [titles.length])
 
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-end relative overflow-hidden pr-8 md:pr-16 lg:pr-24"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, delay: 0.1 }}
-        className="relative z-10 max-w-2xl backdrop-blur-md bg-black/20 border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl"
+        className="relative z-10 max-w-2xl backdrop-blur-md bg-black/20 border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl flex flex-col items-center text-center"
       >
+        {/* NAME */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 text-gradient leading-tight text-right"
+          className="sofiasans text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-gradient leading-tight"
         >
-          {name}
+          Hey there, I'm{" "}
+          <span className="federant text-4xl md:text-6xl lg:text-7xl">{name}</span>
         </motion.h1>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-lg md:text-xl lg:text-2xl text-muted mb-8 font-medium text-right"
-        >
-          {title}
-        </motion.h2>
+        {/* DESIGNATION with wipe-reveal animation */}
+        <div className="h-10 md:h-12 lg:h-14 flex items-center justify-center">
+          <div className="relative inline-flex items-center justify-center overflow-hidden">
+            <span className="text-lg md:text-xl lg:text-2xl text-muted font-medium relative z-0 select-none min-w-[280px] text-center">
+              {titles[index]}
+            </span>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="text-base md:text-lg text-white/80 leading-relaxed text-right"
-        >
-          {tagline}
-        </motion.p>
+            {/* White rectangle wipe with fixed width */}
+            <motion.span
+              aria-hidden
+              className="absolute left-0 top-0 h-full bg-white z-10 pointer-events-none origin-left"
+              style={{ width: "280px", scaleX: 0 }}
+              animate={wipeControls}
+            />
+          </div>
+        </div>
       </motion.div>
     </section>
   )

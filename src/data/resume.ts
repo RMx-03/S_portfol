@@ -1,6 +1,7 @@
 export interface ResumeData {
   name: string;
   title: string;
+  titles: string[];
   tagline: string;
   location: string;
   email: string;
@@ -42,7 +43,8 @@ export interface ResumeData {
 
 export const resumeData: ResumeData = {
   name: "Sauham Vyas",
-  title: "AI Engineer & Developer Relations",
+  title: "AI Engineer",
+  titles: ["AI/ML Engineer", "Data Scientist", "Generative AI Engineer", "Prompt Engineer", "Full Stack Developer"],
   tagline: "A passionate full-stack developer who loves to build things, Currently open for remote work and freelance projects. In my spare time,i enjoy listening to loud music and touching grass.",
   location: "India",
   email: "sauhamv28@gmail.com",

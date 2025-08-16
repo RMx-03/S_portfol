@@ -11,10 +11,10 @@ import { Contact } from "./components/sections/Contact"
 import { FloatingDock } from "./components/navigation/FloatingDock"
 import { LoadingScreen } from "./components/ui/LoadingScreen"
 import FloatingLogo from "./components/ui/FloatingLogo"
+import TargetCursor from "./components/ui/TargetCursor"
 import { ResumeProvider, useResume } from "./context/ResumeContext"
 import { useScrollSpy } from "./hooks/useScrollSpy"
 import { updateDocumentMeta } from "./lib/seo"
-import TargetCursor from "./components/ui/TargetCursor"
 
 declare global {
   interface Window {
@@ -33,6 +33,13 @@ const AppContent: React.FC = () => {
   const vantaEffect = useRef<any>(null)
 
   useEffect(() => {
+    // Force scroll to top on initial load
+    window.scrollTo(0, 0)
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+  }, [])
+
+  useEffect(() => {
     updateDocumentMeta(resumeData)
   }, [resumeData])
 
@@ -41,6 +48,9 @@ const AppContent: React.FC = () => {
       document.body.style.overflow = "hidden"
     } else {
       document.body.style.overflow = "unset"
+      setTimeout(() => {
+        window.scrollTo(0, 0)
+      }, 100)
     }
 
     // Cleanup function to restore scroll when component unmounts
@@ -95,10 +105,11 @@ const AppContent: React.FC = () => {
       {/* Fixed background that covers entire viewport */}
       <div ref={vantaRef} className="fixed inset-0 w-full h-full z-0" />
 
+      <TargetCursor targetSelector=".cursor-target" spinDuration={2} hideDefaultCursor={true} />
+
       {isLoading && <LoadingScreen onLoadingComplete={handleLoadingComplete} />}
 
       <FloatingLogo isVisible={!isLoading} onLogoClick={scrollToHero} />
-      <TargetCursor />
 
       <div
         className={`relative z-10 transition-all duration-1000 ${

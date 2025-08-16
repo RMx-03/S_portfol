@@ -4,64 +4,11 @@ import type React from "react"
 import { useRef, useState } from "react"
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion"
 import { MapPin, Calendar } from "lucide-react"
-
-const experienceData = [
-  {
-    company: "Horeca Store",
-    role: "AI Developer",
-    start: "Mar 2025",
-    end: "Present",
-    location: "Remote-Dubai",
-    achievements: [
-      "Developed and deployed a bulk order recommendation system using customer purchase history, product categories, and seasonal trends",
-      "Collaborated cross-functionally with product and engineering teams to integrate AI-driven recommendations into the platform",
-      "Researched and implemented advanced machine learning techniques, including collaborative filtering and RAG pipelines",
-    ],
-    tech: ["Python", "Machine Learning", "RAG", "Full Stack", "AI Recommendations"],
-  },
-  {
-    company: "SETV Global",
-    role: "AI-ML Engineer",
-    start: "Jul 2024",
-    end: "Feb 2025",
-    location: "Remote-Indore",
-    achievements: [
-      "Implemented advanced computer vision techniques with CNN models to accurately detect tumors and Alzheimer's in MRI scans",
-      "Generated detailed diagnostic reports by identifying sizes, locations, and abnormalities in brain diseases",
-      "Applied NLP techniques to analyze physicians' inputs, enhancing system understanding and boosting response accuracy by 20%",
-    ],
-    tech: ["CNN", "YOLO", "PyTorch", "TensorFlow", "OpenCV", "NLP"],
-  },
-  {
-    company: "Codsoft Infotech",
-    role: "AI and Data Science Intern",
-    start: "May 2024",
-    end: "Jul 2024",
-    location: "Remote-Indore",
-    achievements: [
-      "Developed AI projects using Flask and CNN, enhancing project efficiency and accuracy",
-      "Developed automated ETL pipelines for structured and unstructured data",
-      "Built predictive models to improve customer engagement strategies",
-    ],
-    tech: ["Flask", "CNN", "ETL", "Python", "Data Analysis"],
-  },
-  {
-    company: "Devaditya Technocrats LLP",
-    role: "Operations and Data Analyst",
-    start: "May 2023",
-    end: "May 2024",
-    location: "Indore",
-    achievements: [
-      "Designed and developed interactive dashboards and analytical reports using Matplotlib and Pandas",
-      "Led comprehensive data analysis initiatives using Python and SQL",
-      "Oversaw end-to-end data operations, including accurate data entry from legacy systems",
-    ],
-    tech: ["Python", "Pandas", "NumPy", "SQL", "Excel", "Data Visualization"],
-  },
-]
+import { useResume } from "../../context/ResumeContext"
 
 export const Experience: React.FC = () => {
-  const N = experienceData.length
+  const { experience } = useResume()
+  const N = experience.length
   const sectionRef = useRef<HTMLDivElement>(null)
 
   // Scroll progress across the whole section
@@ -163,7 +110,7 @@ export const Experience: React.FC = () => {
             />
             {/* Dots */}
             <div className="relative -mt-2 flex items-center justify-between">
-              {experienceData.map((_, i) => {
+              {experience.map((_, i) => {
                 const isActive = i === activeIndex
                 const passed = i < activeIndex
                 return (
@@ -201,7 +148,7 @@ export const Experience: React.FC = () => {
                 width: `${N * 100}vw` 
               }}
             >
-              {experienceData.map((exp, i) => {
+              {experience.map((exp, i) => {
                 const isActive = i === activeIndex
                 return (
                   <div key={`${exp.company}-${i}`} className="w-screen flex items-center justify-center px-6 flex-shrink-0">

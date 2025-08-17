@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { motion, useAnimation } from "framer-motion"
+import { motion } from "framer-motion" // removed useAnimation since not using now
 import { useResume } from "../../context/ResumeContext"
 import { useState, useEffect, useRef } from "react"
 
@@ -9,16 +9,14 @@ export const Hero: React.FC = () => {
   const { name, titles, tagline } = useResume()
 
   const [index, setIndex] = useState(0)
-  const wipeControls = useAnimation()
 
+  // For typing tagline
   const [displayedText, setDisplayedText] = useState("")
   const [isTypingComplete, setIsTypingComplete] = useState(false)
 
-  const WIPE_DURATION = 1.2
-  const LOOP_DELAY = 0.2
-
   const mounted = useRef(true)
 
+  // Typing effect for tagline
   useEffect(() => {
     let timeoutId: NodeJS.Timeout
     let currentIndex = 0
@@ -39,6 +37,28 @@ export const Hero: React.FC = () => {
       if (timeoutId) clearTimeout(timeoutId)
     }
   }, [tagline])
+
+  // Simple title rotation (no wipe)
+  useEffect(() => {
+    mounted.current = true
+    const interval = setInterval(() => {
+      if (mounted.current) {
+        setIndex((prev) => (prev + 1) % titles.length)
+      }
+    }, 1000) // change every 3s
+
+    return () => {
+      mounted.current = false
+      clearInterval(interval)
+    }
+  }, [titles.length])
+
+  // -------------------------------  
+  // Keeping for future use but commented out
+  /*
+  const wipeControls = useAnimation()
+  const WIPE_DURATION = 1.2
+  const LOOP_DELAY = 0.2
 
   useEffect(() => {
     mounted.current = true
@@ -74,6 +94,8 @@ export const Hero: React.FC = () => {
       mounted.current = false
     }
   }, [titles.length])
+  */
+  // -------------------------------
 
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -88,25 +110,27 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="prata text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6 text-gradient leading-tight"
+          className="sofiasans text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6 text-gradient text-muted leading-tight"
         >
-          Hey there, I'm <span className="federant text-4xl md:text-6xl lg:text-7xl">{name}</span>
+          Hey there, I'm <span className="prata text-4xl md:text-6xl lg:text-7xl text-white">{name}</span>
         </motion.h1>
 
-        {/* DESIGNATION with wipe-reveal animation */}
+        {/* DESIGNATION (simple change, wipe commented) */}
         <div className="h-10 md:h-12 lg:h-14 flex items-center justify-center cursor-target cursor-none" data-label="Designation">
           <div className="relative inline-flex items-center justify-center overflow-hidden">
             <span className="sofiasans text-lg md:text-xl lg:text-2xl text-muted font-medium relative z-0 select-none min-w-[280px] text-center">
               {titles[index]}
             </span>
 
-            {/* White rectangle wipe with fixed width */}
+            {/* White rectangle wipe (disabled) */}
+            {/*
             <motion.span
               aria-hidden
               className="absolute left-0 top-0 h-full bg-white z-10 pointer-events-none origin-left"
               style={{ width: "280px", scaleX: 0 }}
-              animate={wipeControls}              
+              animate={wipeControls}
             />
+            */}
           </div>
         </div>
       </motion.div>
@@ -115,7 +139,7 @@ export const Hero: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, delay: 1.5 }}
+        transition={{ duration: 1.5, delay: 3 }}
         className="absolute bottom-4 right-4 z-40 max-w-sm cursor-target cursor-none"
         data-label="Tagline"
       >
@@ -141,7 +165,7 @@ export const Hero: React.FC = () => {
           SCROLL
         </span>
         
-        {/* Line that animates - positioned to the right */}
+        {/* Line animation */}
         <div className="w-2 h-16 text-gray-800 ml-0.5">
           <svg 
             viewBox="0 0 10 64" 
@@ -150,7 +174,6 @@ export const Hero: React.FC = () => {
             fill="none" 
             stroke="currentColor"
           >
-            {/* Simple vertical line - taller */}
             <motion.path
               d="M5 2 L5 54"
               strokeWidth="2"

@@ -38,7 +38,7 @@ const FloatingLogo: React.FC<FloatingLogoProps> = ({ isVisible, onLogoClick }) =
       <div className="fixed bottom-4 left-4 z-50 transition-all duration-1000 delay-500 opacity-100 translate-y-0 animate-in fade-in slide-in-from-bottom-4">
         <div className="bg-white p-2 shadow-lg flex flex-col gap-2">
           <a
-            href="https://github.com"
+            href="https://github.com/Sauham"
             target="_blank"
             rel="noopener noreferrer"
             className="cursor-target cursor-none p-2 hover:bg-gray-100 transition-colors duration-200 rounded-sm group"
@@ -47,7 +47,7 @@ const FloatingLogo: React.FC<FloatingLogoProps> = ({ isVisible, onLogoClick }) =
             <Github className="w-5 h-5 text-gray-700 group-hover:text-black transition-colors" />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/sauham-vyas/"
             target="_blank"
             rel="noopener noreferrer"
             className="cursor-target cursor-none p-2 hover:bg-gray-100 transition-colors duration-200 rounded-sm group"

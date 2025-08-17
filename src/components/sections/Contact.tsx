@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Send } from 'lucide-react';
+import { Mail, Github, Linkedin, Send, Phone } from 'lucide-react'; // added Phone
 import { Card } from '../ui/Card';
 import { Button } from '../ui/Button';
 import { useResume } from '../../context/ResumeContext';
 import { useForm, ValidationError } from '@formspree/react';
 
 export const Contact: React.FC = () => {
-  const { email, links } = useResume();
+  const { email, phone, links } = useResume(); // ✅ added phone
   const [state, handleSubmit] = useForm(import.meta.env.VITE_FORMSPREE_ID as string);
 
   const socialLinks = [
@@ -46,6 +46,7 @@ export const Contact: React.FC = () => {
               <h3 className="sofiasans text-xl font-semibold text-white mb-6">Get In Touch</h3>
               
               <div className="delius space-y-4 mb-8">
+                {/* Email */}
                 <motion.a
                   href={`mailto:${email}`}
                   whileHover={{ scale: 1.02 }}
@@ -53,6 +54,16 @@ export const Contact: React.FC = () => {
                 >
                   <Mail size={20} className="text-accent" />
                   <span className="text-white">{email}</span>
+                </motion.a>
+
+                {/* Phone (NEW) */}
+                <motion.a
+                  href={`tel:${phone}`}
+                  whileHover={{ scale: 1.02 }}
+                  className="flex items-center gap-3 p-3 rounded-xl bg-primary-700 hover:bg-primary-600 transition-colors"
+                >
+                  <Phone size={20} className="text-accent" />
+                  <span className="text-white">{phone}</span>
                 </motion.a>
               </div>
               
@@ -77,6 +88,7 @@ export const Contact: React.FC = () => {
             </Card>
           </motion.div>
 
+          {/* Right side (form) remains unchanged */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -96,7 +108,7 @@ export const Contact: React.FC = () => {
                       name="name"
                       placeholder="Your Name"
                       required
-                      className="w-full p-3 bg-primary-700 border border-primary-600 rounded-xl text-white placeholder-muted focus:border-accent focus:outline-none transition-colors"
+                      className="w-full p-3 bg-primary-700 border border-gray-600 rounded-xl text-white placeholder-muted focus:border-accent focus:outline-none transition-colors"
                     />
                     <ValidationError prefix="Name" field="name" errors={state.errors} />
                   </div>
@@ -107,7 +119,7 @@ export const Contact: React.FC = () => {
                       name="email"
                       placeholder="Your Email"
                       required
-                      className="w-full p-3 bg-primary-700 border border-primary-600 rounded-xl text-white placeholder-muted focus:border-accent focus:outline-none transition-colors"
+                      className="w-full p-3 bg-primary-700 border border-gray-600 rounded-xl text-white placeholder-muted focus:border-accent focus:outline-none transition-colors"
                     />
                     <ValidationError prefix="Email" field="email" errors={state.errors} />
                   </div>
@@ -118,12 +130,12 @@ export const Contact: React.FC = () => {
                       placeholder="Your Message"
                       rows={4}
                       required
-                      className="w-full p-3 bg-primary-700 border border-primary-600 rounded-xl text-white placeholder-muted focus:border-accent focus:outline-none transition-colors resize-none"
+                      className="w-full p-3 bg-primary-700 border border-gray-600 rounded-xl text-white placeholder-muted focus:border-accent focus:outline-none transition-colors resize-none"
                     />
                     <ValidationError prefix="Message" field="message" errors={state.errors} />
                   </div>
                   
-                  <Button type="submit" className="sofiasans w-full" disabled={state.submitting}>
+                  <Button type="submit" className="sofiasans w-full cursor-target cursor-none" disabled={state.submitting}>
                     <Send size={16} className="mr-2" />
                     {state.submitting ? "Sending..." : "Send Message"}
                   </Button>

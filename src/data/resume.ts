@@ -114,60 +114,50 @@ export const resumeData: ResumeData = {
   projects: [
     {
       name: "AI Recommendation System",
-      summary:
-        "Machine learning-powered recommendation engine with collaborative and content-based filtering for personalized user experiences.",
+      summary: "Machine learning-powered recommendation engine with collaborative and content-based filtering for personalized user experiences.",
       highlights: [
-        "Achieved 85% accuracy in user preference prediction",
-        "Implemented hybrid recommendation algorithms",
-        "Built scalable ML pipeline with automated retraining"
+        "Hybrid recommender with collaborative filtering + metadata",
+        "Real-time Flask APIs for SaaS & eCommerce integration"
       ],
       tech: ["Python", "Scikit-learn", "Pandas", "Flask", "Redis"],
       repo: "https://github.com/Sauham/AI-Recommendation-System"
     },
     {
       name: "Data Extraction and Sentiment Analysis",
-      summary:
-        "Automated web scraping and data extraction tool for processing multiple URLs with intelligent content parsing.",
+      summary: "Automated web scraping and data extraction tool for processing multiple URLs with intelligent content parsing.",
       highlights: [
-        "Built robust web scraping framework",
-        "Implemented intelligent content extraction algorithms",
-        "Created scalable processing pipeline for batch URLs"
+        "Scraped & cleaned articles with BeautifulSoup + regex",
+        "Sentiment scoring via TextBlob; structured output in Pandas/Excel"
       ],
       tech: ["Python", "BeautifulSoup", "Requests", "Selenium", "Pandas"],
       repo: "https://github.com/Sauham/Data-Extraction-from-URLs"
     },
     {
       name: "RAG Document Chat Application",
-      summary:
-        "Intelligent document processing system using Retrieval-Augmented Generation for natural language queries over large document collections.",
+      summary: "Intelligent document processing system using Retrieval-Augmented Generation for natural language queries over large document collections.",
       highlights: [
-        "Implemented advanced RAG pipeline with vector embeddings",
-        "Built real-time chat interface with document context awareness",
-        "Optimized query performance for large document sets"
+        "LangChain + LlamaIndex chatbot with ChromaDB for Q&A",
+        "Secure Streamlit app with login & document upload"
       ],
       tech: ["Python", "LangChain", "OpenAI", "ChromaDB", "Streamlit"],
       repo: "https://github.com/Sauham/Document-RAG-Chat-Application"
-    },
+    },    
     {
       name: "Fetus Location and Organ Detection",
-      summary:
-        "Collection of computer vision applications including object detection, image classification, and facial recognition systems.",
+      summary: "Collection of computer vision applications including object detection, image classification, and facial recognition systems.",
       highlights: [
-        "Developed real-time object detection with YOLO",
-        "Created facial recognition system with 95% accuracy",
-        "Implemented image preprocessing and augmentation pipelines"
+        "Trained YOLOv8 models for fetal organ detection in scans",
+        "Automated preprocessing & boosted accuracy with OpenCV"
       ],
       tech: ["Python", "OpenCV", "TensorFlow", "YOLO", "NumPy"],
       repo: "https://github.com/Sauham/CV-Projects"
     },
     {
       name: "AI Research agent using LangGraph",
-      summary:
-        "Collection of computer vision applications including object detection, image classification, and facial recognition systems.",
+      summary: "Collection of computer vision applications including object detection, image classification, and facial recognition systems.",
       highlights: [
-        "Developed real-time object detection with YOLO",
-        "Created facial recognition system with 95% accuracy",
-        "Implemented image preprocessing and augmentation pipelines"
+        "Autonomous research agent with LangGraph + OpenAI APIs",
+        "RAG pipelines & memory-aware workflows for context-rich reasoning"
       ],
       tech: ["Python", "OpenCV", "TensorFlow", "YOLO", "NumPy"],
       repo: "https://github.com/Sauham/AI-Research-agent-using-LangGraph"

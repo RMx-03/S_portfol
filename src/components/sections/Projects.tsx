@@ -11,7 +11,7 @@ export const Projects: React.FC = () => {
 
   const TOTAL = 5
   const ANGLE = 360 / TOTAL
-  const RADIUS = 280
+  const RADIUS = 360
 
   const [rotation, setRotation] = useState(0)
 
@@ -96,12 +96,12 @@ export const Projects: React.FC = () => {
                 >
                   {/* Flat inner layer for clickable content */}
                   <div
-                    className={`relative overflow-hidden rounded-2xl bg-black shadow-2xl ${
-                      isFront ? "ring-1 ring-accent shadow-lime-400/80" : ""
+                    className={`relative overflow-hidden rounded-2xl bg-black shadow-lg ${
+                      isFront ? "ring-1 ring-accent shadow-lime-400" : ""
                     }`}
                     style={{
-                      width: "min(80vw, 280px)",
-                      height: "min(100vw, 400px)",
+                      width: "min(80vw, 300px)",
+                      height: "min(100vw, 420px)",
                       position: "relative",
                       zIndex: 50,
                       pointerEvents: "auto"
@@ -152,15 +152,15 @@ export const Projects: React.FC = () => {
                         </div>
                       </div>
 
-                      <p className="sofiasans text-xs leading-relaxed text-white/80 line-clamp-2">
+                      <p className="sofiasans text-xs leading-relaxed text-white/80 ">
                         {proj.summary}
                       </p>
 
-                      <div className="delius space-y-1">
+                      <div className="sofiasans space-y-1">
                         {proj.highlights.slice(0, 2).map((h, k) => (
                           <div key={k} className="flex items-start gap-1.5 text-xs text-white/70">
                             <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-green-600" />
-                            <span className="line-clamp-1">{h}</span>
+                            <span className="">{h}</span>
                           </div>
                         ))}
                       </div>

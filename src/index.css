@@ -15,11 +15,18 @@ body {
 /* Disable cursor for touch devices */
 @media (hover: none) and (pointer: coarse) {
   .cursor-target {
-    cursor: default !important;
+    cursor: none !important;
   }
   
   * {
-    cursor: default !important;
+    cursor: none !important;
+  }
+}
+
+/* Additional touch device detection */
+@media (pointer: coarse) {
+  * {
+    cursor: none !important;
   }
 }
 

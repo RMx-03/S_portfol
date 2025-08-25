@@ -163,30 +163,30 @@ export const Experience: React.FC = () => {
                         damping: 18,
                         duration: 0.6
                       }}
-                      className="w-full max-w-4xl bg-black/40 backdrop-blur-md rounded-2xl border border-white/10 p-4 sm:p-6 md:p-8 shadow-2xl"
+                      className="w-full max-w-4xl bg-black/40 backdrop-blur-md rounded-2xl border border-white/10 p-3 sm:p-6 md:p-8 shadow-2xl h-[400px] md:h-auto flex flex-col"
                     >
-                      <div className="space-y-6">
+                      <div className="space-y-3 md:space-y-6 flex-1 flex flex-col overflow-hidden">
                         {/* Header */}
-                        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-2 md:gap-4 flex-shrink-0">
                           <div>
-                            <h3 className="sofiasans text-2xl font-bold text-white mb-2">{exp.role}</h3>
-                            <h4 className="delius text-xl text-lime-400 font-semibold">{exp.company}</h4>
+                            <h3 className="sofiasans text-lg md:text-2xl font-bold text-white mb-1 md:mb-2">{exp.role}</h3>
+                            <h4 className="delius text-base md:text-xl text-lime-400 font-semibold">{exp.company}</h4>
                           </div>
-                          <div className="prata flex flex-col sm:flex-row gap-4 text-sm text-white/70">
+                          <div className="prata flex flex-col sm:flex-row gap-2 md:gap-4 text-xs md:text-sm text-white/70">
                             <div className="flex items-center gap-2">
-                              <Calendar size={16} />
+                              <Calendar size={14} className="md:w-4 md:h-4" />
                               {exp.start} - {exp.end}
                             </div>
                             <div className="flex items-center gap-2">
-                              <MapPin size={16} />
+                              <MapPin size={14} className="md:w-4 md:h-4" />
                               {exp.location}
                             </div>
                           </div>
                         </div>
 
                         {/* Achievements */}
-                        <div className="prata space-y-3">
-                          {exp.achievements.map((a, idx) => (
+                        <div className="prata space-y-1.5 md:space-y-3 flex-1 overflow-hidden">
+                          {exp.achievements.slice(0, 4).map((a, idx) => (
                             <motion.div
                               key={idx}
                               initial={{ opacity: 0, x: 16 }}
@@ -198,17 +198,22 @@ export const Experience: React.FC = () => {
                                 delay: isActive ? 0.05 * idx : 0,
                                 duration: 0.5 
                               }}
-                              className="flex items-start gap-3"
+                              className="flex items-start gap-2 md:gap-3"
                             >
-                              <div className="w-2 h-2 bg-lime-400 rounded-full mt-2 flex-shrink-0" />
-                              <span className="text-white/85 leading-relaxed">{a}</span>
+                              <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-lime-400 rounded-full mt-1.5 md:mt-2 flex-shrink-0" />
+                              <span className="text-white/85 text-sm md:text-base leading-snug md:leading-relaxed">{a}</span>
                             </motion.div>
                           ))}
+                          {exp.achievements.length > 4 && (
+                            <div className="text-xs md:text-sm text-white/50 italic ml-4">
+                              +{exp.achievements.length - 4} more achievements...
+                            </div>
+                          )}
                         </div>
 
                         {/* Tech */}
-                        <div className="delius flex flex-wrap gap-2 pt-4">
-                          {exp.tech.map((t, idx) => (
+                        <div className="delius flex flex-wrap gap-1 md:gap-2 pt-2 md:pt-4 flex-shrink-0">
+                          {exp.tech.slice(0, 6).map((t, idx) => (
                             <motion.span
                               key={t}
                               initial={{ opacity: 0, scale: 0.9 }}
@@ -220,11 +225,16 @@ export const Experience: React.FC = () => {
                                 delay: isActive ? 0.03 * idx : 0,
                                 duration: 0.4 
                               }}
-                              className="px-3 py-1 bg-lime-400/10 border border-lime-400/20 rounded-full text-sm text-lime-400"
+                              className="px-2 md:px-3 py-1 bg-lime-400/10 border border-lime-400/20 rounded-full text-xs md:text-sm text-lime-400"
                             >
                               {t}
                             </motion.span>
                           ))}
+                          {exp.tech.length > 6 && (
+                            <span className="px-2 md:px-3 py-1 bg-lime-400/10 border border-lime-400/20 rounded-full text-xs md:text-sm text-lime-400/60">
+                              +{exp.tech.length - 6}
+                            </span>
+                          )}
                         </div>
                       </div>
                     </motion.div>

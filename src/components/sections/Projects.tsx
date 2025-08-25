@@ -233,15 +233,15 @@ export const Projects: React.FC = () => {
       </div>
 
       {/* Mobile Cards with Simple Border and Swipe */}
-      <div className="md:hidden relative w-full px-4">
+      <div className="md:hidden relative w-full">
         <div 
-          className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4" 
+          className="flex overflow-x-auto snap-x snap-mandatory pb-4 px-4" 
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           onScroll={(e) => {
             const container = e.target as HTMLElement
             const scrollLeft = container.scrollLeft
-            const cardWidth = 300 + 16 // card width + gap
-            const currentIndex = Math.round(scrollLeft / cardWidth)
+            const containerWidth = container.offsetWidth
+            const currentIndex = Math.round(scrollLeft / containerWidth)
             if (currentIndex !== frontIndex) {
               setRotation(-currentIndex * ANGLE)
             }
@@ -250,14 +250,16 @@ export const Projects: React.FC = () => {
           {projects?.map((proj, i) => (
             <motion.div
               key={i}
-              className="flex-shrink-0 w-80 snap-center"
+              className="flex-shrink-0 snap-center"
+              style={{ width: 'calc(100vw - 2rem)' }}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
             >
-              {/* Card content with simple border and fixed dimensions */}
-              <div className="bg-black/90 backdrop-blur-sm border-2 border-accent/40 rounded-2xl overflow-hidden hover:border-accent/60 transition-all duration-300 w-80 h-[500px] flex flex-col">
+              <div className="mx-4">
+                {/* Card content with simple border and responsive dimensions */}
+                <div className="bg-black/90 backdrop-blur-sm border-2 border-accent/40 rounded-2xl overflow-hidden hover:border-accent/60 transition-all duration-300 w-full h-[500px] flex flex-col">
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden flex-shrink-0">
                   <img
@@ -329,6 +331,7 @@ export const Projects: React.FC = () => {
                       </span>
                     )}
                   </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -345,19 +348,18 @@ export const Projects: React.FC = () => {
             return (
               <motion.div
                 key={i}
-                className="flex-shrink-0 w-80 snap-center"
+                className="flex-shrink-0 snap-center"
+                style={{ width: 'calc(100vw - 2rem)' }}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
               >
-                <div className="relative group">
-                  {/* Always visible neon glow effect */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-accent/40 to-green-400/40 rounded-2xl blur-md opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-accent/60 to-green-400/60 rounded-2xl blur-sm opacity-40 group-hover:opacity-80 transition-opacity duration-500" />
-                  
-                  <div className="relative bg-black/90 backdrop-blur-sm border border-accent/30 rounded-2xl overflow-hidden hover:border-accent/60 transition-all duration-300">
-                    <div className="relative h-40 mb-4 overflow-hidden">
+                <div className="mx-4">
+                  {/* Card content with simple border and responsive dimensions */}
+                  <div className="bg-black/90 backdrop-blur-sm border-2 border-accent/40 rounded-2xl overflow-hidden hover:border-accent/60 transition-all duration-300 w-full h-[500px] flex flex-col">
+                    {/* Image */}
+                    <div className="relative h-48 overflow-hidden flex-shrink-0">
                       <img
                         src={images[i] || "/placeholder.svg"}
                         alt={proj.name}

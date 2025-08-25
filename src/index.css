@@ -12,20 +12,39 @@ body {
   overflow-x: hidden;
 }
 
-/* Disable cursor for touch devices */
+/* Disable cursor for touch devices - comprehensive approach */
 @media (hover: none) and (pointer: coarse) {
+  *, *:before, *:after {
+    cursor: none !important;
+  }
+  
   .cursor-target {
     cursor: none !important;
   }
   
-  * {
+  button, a, input, textarea, select {
     cursor: none !important;
   }
 }
 
 /* Additional touch device detection */
 @media (pointer: coarse) {
-  * {
+  *, *:before, *:after {
+    cursor: none !important;
+  }
+  
+  button, a, input, textarea, select {
+    cursor: none !important;
+  }
+}
+
+/* Force disable cursor on mobile viewport sizes */
+@media (max-width: 768px) {
+  *, *:before, *:after {
+    cursor: none !important;
+  }
+  
+  button, a, input, textarea, select {
     cursor: none !important;
   }
 }

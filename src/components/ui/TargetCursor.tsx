@@ -9,6 +9,19 @@ const TargetCursor = ({ targetSelector = ".cursor-target", spinDuration = 2, hid
   const labelRef = useRef(null)
   const spinTl = useRef(null)
   const dotRef = useRef(null)
+
+  // Check if device is touch device
+  const isTouchDevice = useMemo(() => {
+    if (typeof window !== 'undefined') {
+      return (
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.matchMedia('(pointer: coarse)').matches ||
+        window.matchMedia('(hover: none)').matches
+      )
+    }
+    return false
+  }, [])
   const constants = useMemo(
     () => ({
       borderWidth: 3,
@@ -48,6 +61,11 @@ const TargetCursor = ({ targetSelector = ".cursor-target", spinDuration = 2, hid
       ease: "power2.out",
     })
   }, [])
+
+  // Don't render cursor on touch devices
+  if (isTouchDevice) {
+    return null
+  }
 
   useEffect(() => {
     if (!cursorRef.current) return

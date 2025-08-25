@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
 import { motion } from "framer-motion"
 import { Home, User, Code2, FolderOpen, Briefcase, Mail } from "lucide-react"
 
@@ -17,7 +16,6 @@ interface FloatingDockProps {
 }
 
 export const FloatingDock: React.FC<FloatingDockProps> = ({ activeSection }) => {
-  const [isExpanded, setIsExpanded] = useState(false)
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -41,11 +39,9 @@ export const FloatingDock: React.FC<FloatingDockProps> = ({ activeSection }) => 
   ]
 
   return (
-    <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50">
+    <div className="fixed right-2 md:right-8 top-1/2 transform -translate-y-1/2 z-50">
       <motion.div
-        onMouseEnter={() => setIsExpanded(true)}
-        onMouseLeave={() => setIsExpanded(false)}
-        className="flex flex-col items-center gap-1 bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl px-3 py-4 shadow-2xl"
+        className="flex flex-col items-center gap-1 bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl px-2 md:px-3 py-3 md:py-4 shadow-2xl"
       >
         {dockItems.map((item, index) => (
           <motion.button
@@ -56,7 +52,7 @@ export const FloatingDock: React.FC<FloatingDockProps> = ({ activeSection }) => 
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={item.action}
-            className="cursor-target cursor-none relative flex items-center justify-center p-3 rounded-xl transition-all duration-200 text-white/70 hover:text-white hover:bg-white/10"
+            className="cursor-target cursor-none relative flex items-center justify-center p-2 md:p-3 rounded-xl transition-all duration-200 text-white/70 hover:text-white hover:bg-white/10"
             data-label={item.label}
           >
             {activeSection === item.id && (

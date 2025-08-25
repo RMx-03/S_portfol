@@ -140,7 +140,7 @@ export const Hero: React.FC = () => {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1.5, delay: 3 }}
-        className="absolute bottom-4 right-4 z-40 max-w-sm cursor-target cursor-none"
+        className="absolute bottom-4 right-2 md:right-4 z-40 max-w-xs md:max-w-sm cursor-target cursor-none"
         data-label="Tagline"
       >
         <div className="bg-white p-4 shadow-lg">
@@ -156,7 +156,7 @@ export const Hero: React.FC = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 1.8 }}
-        className="absolute top-4 right-4 z-40 flex flex-row items-center justify-center bg-white px-2 py-3 shadow-lg select-none cursor-target cursor-none"
+        className="absolute top-4 right-2 md:right-4 z-40 flex flex-row items-center justify-center bg-white px-2 py-3 shadow-lg select-none cursor-target cursor-none"
         aria-hidden
         data-label="more"
       >

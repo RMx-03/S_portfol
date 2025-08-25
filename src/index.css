@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Targeted overflow prevention for mobile responsiveness */
+body {
+  max-width: 100vw;
+}
+
+/* Prevent overflow on specific sections that don't need horizontal scroll */
+#hero, #about, #skills, #projects, #contact {
+  overflow-x: hidden;
+}
+
+/* Disable cursor for touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-target {
+    cursor: default !important;
+  }
+  
+  * {
+    cursor: default !important;
+  }
+}
+
 .prata {
   font-family: "Prata", serif;
   font-weight: 400;

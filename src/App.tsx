@@ -9,6 +9,7 @@ import { Projects } from "./components/sections/Projects"
 import { Experience } from "./components/sections/Experience"
 import { Contact } from "./components/sections/Contact"
 import { FloatingDock } from "./components/navigation/FloatingDock"
+import { MobileNavigation } from "./components/navigation/MobileNavigation"
 import { LoadingScreen } from "./components/ui/LoadingScreen"
 import FloatingLogo from "./components/ui/FloatingLogo"
 import TargetCursor from "./components/ui/TargetCursor"
@@ -125,7 +126,12 @@ const AppContent: React.FC = () => {
           <Contact />
         </main>
       </div>
-      {!isLoading && activeSection !== "hero" && <FloatingDock activeSection={activeSection} />}
+      {!isLoading && activeSection !== "hero" && (
+        <div className="hidden lg:block">
+          <FloatingDock activeSection={activeSection} />
+        </div>
+      )}
+      {!isLoading && activeSection !== "hero" && <MobileNavigation activeSection={activeSection} />}
     </div>
   )
 }

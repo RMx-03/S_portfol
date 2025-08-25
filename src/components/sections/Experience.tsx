@@ -151,7 +151,7 @@ export const Experience: React.FC = () => {
               {experience.map((exp, i) => {
                 const isActive = i === activeIndex
                 return (
-                  <div key={`${exp.company}-${i}`} className="w-screen flex items-center justify-center px-6 flex-shrink-0">
+                  <div key={`${exp.company}-${i}`} className="w-screen flex items-center justify-center px-4 sm:px-6 flex-shrink-0">
                     <motion.div
                       animate={{
                         scale: isActive ? 1 : 0.95,
@@ -163,7 +163,7 @@ export const Experience: React.FC = () => {
                         damping: 18,
                         duration: 0.6
                       }}
-                      className="w-full max-w-4xl bg-black/40 backdrop-blur-md rounded-2xl border border-white/10 p-8 shadow-2xl"
+                      className="w-full max-w-4xl bg-black/40 backdrop-blur-md rounded-2xl border border-white/10 p-4 sm:p-6 md:p-8 shadow-2xl"
                     >
                       <div className="space-y-6">
                         {/* Header */}

@@ -215,8 +215,8 @@ export const Projects: React.FC = () => {
         </button>
       </div>
 
-      {/* Dots */}
-      <div className="mt-8 flex justify-center gap-2">
+      {/* Dots - Desktop only */}
+      <div className="hidden md:flex mt-8 justify-center gap-2">
         {Array.from({ length: TOTAL }).map((_, i) => {
           const isActive = i === frontIndex
           return (
@@ -232,9 +232,21 @@ export const Projects: React.FC = () => {
         })}
       </div>
 
-      {/* Mobile Cards with Neon Glow and Swipe */}
+      {/* Mobile Cards with Simple Border and Swipe */}
       <div className="md:hidden relative w-full px-4">
-        <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+        <div 
+          className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4" 
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          onScroll={(e) => {
+            const container = e.target as HTMLElement
+            const scrollLeft = container.scrollLeft
+            const cardWidth = 300 + 16 // card width + gap
+            const currentIndex = Math.round(scrollLeft / cardWidth)
+            if (currentIndex !== frontIndex) {
+              setRotation(-currentIndex * ANGLE)
+            }
+          }}
+        >
           {projects?.map((proj, i) => (
             <motion.div
               key={i}
@@ -244,26 +256,23 @@ export const Projects: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
             >
-              <div className="relative group">
-                {/* Always visible neon glow effect */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-accent/40 to-green-400/40 rounded-2xl blur-md opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-accent/60 to-green-400/60 rounded-2xl blur-sm opacity-40 group-hover:opacity-80 transition-opacity duration-500" />
-                
-                {/* Card content */}
-                <div className="relative bg-black/90 backdrop-blur-sm border border-accent/30 rounded-2xl overflow-hidden hover:border-accent/60 transition-all duration-300">
-                  {/* Image */}
-                  <div className="relative h-40 mb-4 overflow-hidden">
-                    <img
-                      src={images[i] || "/placeholder.svg"}
-                      alt={proj.name}
-                      className="h-full w-full object-cover"
-                      draggable={false}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  </div>
+              {/* Card content with simple border and fixed dimensions */}
+              <div className="bg-black/90 backdrop-blur-sm border-2 border-accent/40 rounded-2xl overflow-hidden hover:border-accent/60 transition-all duration-300 w-80 h-[500px] flex flex-col">
+                {/* Image */}
+                <div className="relative h-48 overflow-hidden flex-shrink-0">
+                  <img
+                    src={images[i] || "/placeholder.svg"}
+                    alt={proj.name}
+                    className="h-full w-full object-cover"
+                    draggable={false}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                </div>
 
+                {/* Content area with flex-grow */}
+                <div className="flex-1 flex flex-col p-4">
                   {/* Project name and actions */}
-                  <div className="flex items-start justify-between gap-2 mb-3 px-6 pt-4">
+                  <div className="flex items-start justify-between gap-2 mb-3">
                     <h3 className="delius text-lg font-bold text-white leading-tight flex-1">
                       {proj.name}
                     </h3>
@@ -290,13 +299,13 @@ export const Projects: React.FC = () => {
                   </div>
 
                   {/* Summary */}
-                  <p className="sofiasans text-sm leading-relaxed text-white/80 mb-4 px-6">
+                  <p className="sofiasans text-sm leading-snug text-white/80 mb-3 flex-shrink-0">
                     {proj.summary}
                   </p>
 
                   {/* Highlights */}
-                  <div className="sofiasans space-y-2 mb-4 px-6">
-                    {proj.highlights.slice(0, 3).map((h, k) => (
+                  <div className="sofiasans space-y-1 mb-3 flex-shrink-0">
+                    {proj.highlights.slice(0, 2).map((h, k) => (
                       <div key={k} className="flex items-start gap-2 text-sm text-white/70">
                         <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
                         <span>{h}</span>
@@ -305,18 +314,18 @@ export const Projects: React.FC = () => {
                   </div>
 
                   {/* Tech stack */}
-                  <div className="sofiasans flex flex-wrap gap-2 px-6 pb-6">
-                    {proj.tech.slice(0, 4).map((t) => (
+                  <div className="sofiasans flex flex-wrap gap-2 mt-auto">
+                    {proj.tech.slice(0, 3).map((t) => (
                       <span
                         key={t}
-                        className="rounded-md border border-accent/20 bg-accent/10 px-3 py-1 text-sm text-accent"
+                        className="rounded-md border border-accent/20 bg-accent/10 px-2 py-1 text-xs text-accent"
                       >
-                        {t.length > 10 ? t.substring(0, 10) + "..." : t}
+                        {t.length > 8 ? t.substring(0, 8) + "..." : t}
                       </span>
                     ))}
-                    {proj.tech.length > 4 && (
-                      <span className="rounded-md border border-accent/20 bg-accent/10 px-3 py-1 text-sm text-accent">
-                        +{proj.tech.length - 4}
+                    {proj.tech.length > 3 && (
+                      <span className="rounded-md border border-accent/20 bg-accent/10 px-2 py-1 text-xs text-accent">
+                        +{proj.tech.length - 3}
                       </span>
                     )}
                   </div>
@@ -409,16 +418,23 @@ export const Projects: React.FC = () => {
         
         {/* Scroll indicator for mobile */}
         <div className="flex flex-col items-center mt-6 space-y-4">
-          <p className="sofiasans text-sm text-white">← Swipe to explore projects →</p>
+          <p className="sofiasans text-sm text-white/60">← Swipe to explore projects →</p>
           
-          {/* Mobile dots indicator */}
+          {/* Mobile dots indicator - functional */}
           <div className="flex justify-center gap-2">
-            {Array.from({ length: projects?.length || TOTAL }).map((_, i) => (
-              <div
-                key={i}
-                className="h-2 w-2 rounded-full bg-white/30 transition-all duration-300"
-              />
-            ))}
+            {Array.from({ length: projects?.length || TOTAL }).map((_, i) => {
+              const isActive = i === frontIndex
+              return (
+                <button
+                  key={i}
+                  onClick={() => setRotation(-i * ANGLE)}
+                  className={`h-3 w-3 rounded-full transition-all duration-300 ${
+                    isActive ? "scale-125 bg-accent" : "bg-white/30 hover:bg-white/50"
+                  }`}
+                  aria-label={`Go to project ${i + 1}`}
+                />
+              )
+            })}
           </div>
         </div>
       </div>

@@ -165,10 +165,36 @@ export const resumeData: ResumeData = {
   ],
   experience: [
     {
+      company: "Webflow",
+      role: "Agentic AI Engineer",
+      start: "Nov 2025",
+      end: "Present",
+      location: "Remote",
+      achievements: [
+        "Designed and deployed an automated Recruiting Agent using AWS Bedrock Agent Core and Strands, integrating Greenhouse, Airtable, Google Calendar, and Slack to reduce HR coordination time by 80%",
+        "Engineered a cost-analysis AI Agent with Ray.IO workflows, gRPC, and Google Cloud Pub/Sub to automate IT budget variance analysis and reduce manual effort by 50%",
+        "Implemented RAG capabilities in Slack using Qdrant and LlamaIndex, enabling conversational querying of structured enterprise data from databases and Google Sheets"
+      ],
+      tech: [
+        "Python",
+        "AWS Bedrock",
+        "Strands",
+        "Ray.IO",
+        "gRPC",
+        "Google Cloud Pub/Sub",
+        "Qdrant",
+        "LlamaIndex",
+        "Slack API",
+        "Google Calendar API",
+        "Airtable",
+        "RAG"
+      ]
+    },
+    {
       company: "Horeca Store",
       role: "AI Developer",
       start: "Mar 2025",
-      end: "Present",
+      end: "Oct 2025",
       location: "Remote - Dubai",
       achievements: [
         "Developed and deployed a bulk order recommendation system optimizing B2B inventory planning",
